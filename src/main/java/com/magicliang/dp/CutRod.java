@@ -7,6 +7,8 @@ package com.magicliang.dp;
  */
 public class CutRod {
 
+    public static int[] revenue;
+
     /**
      * 自顶向下的备忘录方法。
      * 此方法按照自然的递归形式编写过程。但过程会保存每个子问题的解
@@ -16,8 +18,9 @@ public class CutRod {
      * @return 最大收益值是多少
      */
     public static int topDownCutRodWithMemoized(int[] price, int n) {
-        int[] revenue = getRevenues(n);
-
+        if (null == revenue) {
+            revenue = getRevenues(n);
+        }
         if (n == 0) {
             return 0;
         }
@@ -42,8 +45,9 @@ public class CutRod {
      * @return 最大收益值是多少
      */
     public static int bottomUpCutRodWithMemoized(int[] price, int n) {
-        int[] revenue = getRevenues(n);
-
+        if (null == revenue) {
+            revenue = getRevenues(n);
+        }
         if (n == 0) {
             return 0;
         }
