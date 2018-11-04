@@ -34,20 +34,30 @@ public class FibonacciProblemsTest {
     public void topDownSolution() {
 
         long begin = System.currentTimeMillis();
-        Assert.assertEquals(6765, FibonacciProblems.topDownSolution(20));
+        Assert.assertEquals(102334155, FibonacciProblems.topDownSolution(40));
         long end =  System.currentTimeMillis();
         long elapsed = end - begin;
 
         System.out.println("用时：" + elapsed);
     }
-//
+
 //    @Test
 //    public void topDownSolutionWithThreadLocal() {
 //        long begin = System.currentTimeMillis();
-//        Assert.assertEquals(6765, FibonacciProblems.topDownSolutionWithThreadLocal(20));
+//        Assert.assertEquals(102334155, FibonacciProblems.topDownSolutionWithThreadLocal(40));
 //        long end = System.currentTimeMillis();
 //        long elapsed = end - begin;
 //
 //        System.out.println("用时：" + elapsed);
 //    }
+
+    @Test
+    public void bottomUpSolution() {
+        long begin = System.currentTimeMillis();
+        Assert.assertEquals(102334155, FibonacciProblems.bottomUpSolution(40));
+        long end = System.currentTimeMillis();
+        long elapsed = end - begin;
+
+        System.out.println("用时：" + elapsed);
+    }
 }

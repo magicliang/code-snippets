@@ -133,4 +133,33 @@ public class FibonacciProblems {
 //        return result;
 //    }
 
+    /**
+     * 从底部算起，迭代的结果更快。
+     *
+     * @param scale 问题规模
+     * @return 解
+     */
+    public static int bottomUpSolution(int scale) {
+        int arrayLength = scale + 1;
+        int[] fib = new int[arrayLength];
+
+        // fib[0] is useless
+        for (int i = 0; i < arrayLength; i++) {
+            fib[i] = Integer.MIN_VALUE;
+        }
+        fib[1] = fib[2] = 1;
+
+        if (1 == scale || 2 == scale) {
+            // 这里提前返回的精髓是，不要再递归了
+            return fib[scale];
+        }
+
+        for (int i = 2; i < scale; i++) {
+            fib[i + 1] = fib[i] + fib[i - 1];
+            counter++;
+        }
+        System.out.println("counter is:" + counter);
+        return fib[scale];
+    }
+
 }
