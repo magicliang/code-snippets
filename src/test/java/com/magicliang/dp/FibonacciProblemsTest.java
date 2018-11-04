@@ -10,13 +10,13 @@ public class FibonacciProblemsTest {
 
     @Test
     public void classicalSolution() {
-        Assert.assertEquals(1, FibonacciProblems.classicalSolution(1));
-        Assert.assertEquals(1, FibonacciProblems.classicalSolution(2));
-        Assert.assertEquals(2, FibonacciProblems.classicalSolution(3));
-        Assert.assertEquals(3, FibonacciProblems.classicalSolution(4));
-        Assert.assertEquals(5, FibonacciProblems.classicalSolution(5));
-        Assert.assertEquals(8, FibonacciProblems.classicalSolution(6));
-        Assert.assertEquals(13, FibonacciProblems.classicalSolution(7));
+//        Assert.assertEquals(1, FibonacciProblems.classicalSolution(1));
+//        Assert.assertEquals(1, FibonacciProblems.classicalSolution(2));
+//        Assert.assertEquals(2, FibonacciProblems.classicalSolution(3));
+//        Assert.assertEquals(3, FibonacciProblems.classicalSolution(4));
+//        Assert.assertEquals(5, FibonacciProblems.classicalSolution(5));
+//        Assert.assertEquals(8, FibonacciProblems.classicalSolution(6));
+//        Assert.assertEquals(13, FibonacciProblems.classicalSolution(7));
         Assert.assertEquals(21, FibonacciProblems.classicalSolution(8));
     }
 
@@ -40,14 +40,14 @@ public class FibonacciProblemsTest {
 
         System.out.println("用时：" + elapsed);
     }
-
-    @Test
-    public void topDownSolutionWithThreadLocal() {
-        long begin = System.currentTimeMillis();
-        Assert.assertEquals(6765, FibonacciProblems.topDownSolutionWithThreadLocal(20));
-        long end = System.currentTimeMillis();
-        long elapsed = end - begin;
-
-        System.out.println("用时：" + elapsed);
-    }
+//
+//    @Test
+//    public void topDownSolutionWithThreadLocal() {
+//        long begin = System.currentTimeMillis();
+//        Assert.assertEquals(6765, FibonacciProblems.topDownSolutionWithThreadLocal(20));
+//        long end = System.currentTimeMillis();
+//        long elapsed = end - begin;
+//
+//        System.out.println("用时：" + elapsed);
+//    }
 }
