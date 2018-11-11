@@ -3,6 +3,11 @@ package com.magicliang.dp;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 测试钢条切割问题
+ *
+ * @author liangchuan
+ */
 public class CutRodTest {
     int[] price = {0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
 

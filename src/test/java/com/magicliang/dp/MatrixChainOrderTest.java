@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
+ * 测试矩阵链乘法问题
  * @author liangchuan
  */
 public class MatrixChainOrderTest {
