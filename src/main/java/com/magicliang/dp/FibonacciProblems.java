@@ -20,6 +20,11 @@ public class FibonacciProblems {
      * @return 数列第 n 位 值
      */
     public static int classicalSolution(int scale) {
+
+        if (scale <= 0) {
+            throw new IllegalArgumentException("scale must be greater than 0!");
+        }
+
         if (scale == 1 || scale == 2) {
             return 1;
         }
@@ -34,6 +39,11 @@ public class FibonacciProblems {
      * @return 数列第 n 位 值
      */
     public static int topDownSolution(int scale) {
+
+        if (scale <= 0) {
+            throw new IllegalArgumentException("scale must be greater than 0!");
+        }
+
 
         // 一种不使用 ThreadLocal的方案。即有一个主函数来初始化数组，并给真实调用的函数以县城封闭的数组。
         int[] fib = new int[scale];
