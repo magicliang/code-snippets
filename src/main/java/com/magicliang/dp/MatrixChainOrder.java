@@ -1,9 +1,9 @@
 package com.magicliang.dp;
 
-import java.io.Serializable;
-
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+
+import java.io.Serializable;
 
 /**
  * 解决矩阵链相乘问题

@@ -2,10 +2,10 @@ package com.magicliang.dp;
 
 
 /**
- * ÓÃ dp À´½âì³²¨ÄÇÆõÎÊÌâ
+ * ç”¨ dp æ¥è§£æ–æ³¢é‚£å¥‘é—®é¢˜
  *
  * @author magicliang
- * @version $Id: FibonacciProblems.java, v 0.1 2018Äê11ÔÂ04ÈÕ 21:33 magicliang Exp $
+ * @version $Id: FibonacciProblems.java, v 0.1 2018å¹´11æœˆ04æ—¥ 21:33 magicliang Exp $
  */
 public class FibonacciProblems {
 
@@ -14,10 +14,10 @@ public class FibonacciProblems {
 //            ThreadLocal.withInitial(() -> new ArrayList<>(0));
 
     /**
-     * ÆÕÍ¨µİ¹é½â
+     * æ™®é€šé€’å½’è§£
      *
-     * @param scale ÎÊÌâ¹æÄ£
-     * @return ÊıÁĞµÚ n Î» Öµ
+     * @param scale é—®é¢˜è§„æ¨¡
+     * @return æ•°åˆ—ç¬¬ n ä½ å€¼
      */
     public static int classicalSolution(int scale) {
         if (scale == 1 || scale == 2) {
@@ -29,14 +29,14 @@ public class FibonacciProblems {
     }
 
     /**
-     * »ùÓÚ×Ô¶¥ÏòÏÂµÄ¶¯Ì¬¹æ»®µÄ½â
+     * åŸºäºè‡ªé¡¶å‘ä¸‹çš„åŠ¨æ€è§„åˆ’çš„è§£
      *
-     * @param scale ÎÊÌâ¹æÄ£
-     * @return ÊıÁĞµÚ n Î» Öµ
+     * @param scale é—®é¢˜è§„æ¨¡
+     * @return æ•°åˆ—ç¬¬ n ä½ å€¼
      */
     public static int topDownSolution(int scale) {
 
-        // Ò»ÖÖ²»Ê¹ÓÃ ThreadLocalµÄ·½°¸¡£¼´ÓĞÒ»¸öÖ÷º¯ÊıÀ´³õÊ¼»¯Êı×é£¬²¢¸øÕæÊµµ÷ÓÃµÄº¯ÊıÒÔÏØ³Ç·â±ÕµÄÊı×é¡£
+        // ä¸€ç§ä¸ä½¿ç”¨ ThreadLocalçš„æ–¹æ¡ˆã€‚å³æœ‰ä¸€ä¸ªä¸»å‡½æ•°æ¥åˆå§‹åŒ–æ•°ç»„ï¼Œå¹¶ç»™çœŸå®è°ƒç”¨çš„å‡½æ•°ä»¥å¿åŸå°é—­çš„æ•°ç»„ã€‚
         int[] fib = new int[scale];
 
         for (int i = 0; i < scale; i++) {
@@ -53,7 +53,7 @@ public class FibonacciProblems {
         if (scale == 1 || scale == 2) {
             result = 1;
             fib[fibIndex] = result;
-            // System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+            // System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
             return result;
         }
 
@@ -76,7 +76,7 @@ public class FibonacciProblems {
         }
 
         result = subResult1 + subResult2;
-        // System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+        // System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
 
         counter++;
         System.out.println("counter is:" + counter);
@@ -84,11 +84,11 @@ public class FibonacciProblems {
     }
 
     /**
-     * ThreadLocal ³õÊ¼»¯ÖÁÉÙĞèÒª50s£¬²»ÒªÒ²°Õ¡£
+     * ThreadLocal åˆå§‹åŒ–è‡³å°‘éœ€è¦50sï¼Œä¸è¦ä¹Ÿç½¢ã€‚
      */
 //    public static int topDownSolutionWithThreadLocal(int scale) {
 //
-//        // Ò»ÖÖ²»Ê¹ÓÃ ThreadLocalµÄ·½°¸¡£¼´ÓĞÒ»¸öÖ÷º¯ÊıÀ´³õÊ¼»¯Êı×é£¬²¢¸øÕæÊµµ÷ÓÃµÄº¯ÊıÒÔÏØ³Ç·â±ÕµÄÊı×é¡£
+//        // ä¸€ç§ä¸ä½¿ç”¨ ThreadLocalçš„æ–¹æ¡ˆã€‚å³æœ‰ä¸€ä¸ªä¸»å‡½æ•°æ¥åˆå§‹åŒ–æ•°ç»„ï¼Œå¹¶ç»™çœŸå®è°ƒç”¨çš„å‡½æ•°ä»¥å¿åŸå°é—­çš„æ•°ç»„ã€‚
 //        List<Integer> fib = tlFib.get();
 //        if (fib.isEmpty()) {
 //            for (int i = 0; i < scale; i++) {
@@ -102,7 +102,7 @@ public class FibonacciProblems {
 //        if (scale == 1 || scale == 2) {
 //            result = 1;
 //            fib.set(fibIndex, result);
-//            System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+//            System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
 //            return result;
 //        }
 //
@@ -125,19 +125,19 @@ public class FibonacciProblems {
 //        }
 //
 //        result = subResult1 + subResult2;
-//        System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+//        System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
 //
-//        // TODO: Ê²Ã´Ê±ºòclear threadLocal
+//        // TODO: ä»€ä¹ˆæ—¶å€™clear threadLocal
 //        counter++;
 //        System.out.println("counter is:" + counter);
 //        return result;
 //    }
 
     /**
-     * ´Óµ×²¿ËãÆğ£¬µü´úµÄ½á¹û¸ü¿ì¡£
+     * ä»åº•éƒ¨ç®—èµ·ï¼Œè¿­ä»£çš„ç»“æœæ›´å¿«ã€‚
      *
-     * @param scale ÎÊÌâ¹æÄ£
-     * @return ½â
+     * @param scale é—®é¢˜è§„æ¨¡
+     * @return è§£
      */
     public static int bottomUpSolution(int scale) {
         int arrayLength = scale + 1;
@@ -150,7 +150,7 @@ public class FibonacciProblems {
         fib[1] = fib[2] = 1;
 
         if (1 == scale || 2 == scale) {
-            // ÕâÀïÌáÇ°·µ»ØµÄ¾«ËèÊÇ£¬²»ÒªÔÙµİ¹éÁË
+            // è¿™é‡Œæå‰è¿”å›çš„ç²¾é«“æ˜¯ï¼Œä¸è¦å†é€’å½’äº†
             return fib[scale];
         }
 
