@@ -20,18 +20,10 @@ public class FullSequenceProblemTest {
     private static final List<String> STRINGS = new ArrayList<>();
 
     {
-        //for (int i = 0; i < 15; i++) {
-        //    int characther = 'a' + i;
-        //    STRINGS.add((char)characther + "");
-        //
-        //}
-        STRINGS.add("a");
-        STRINGS.add("b");
-        STRINGS.add("c");
-        STRINGS.add("d");
-        STRINGS.add("f");
-        STRINGS.add("g");
-        STRINGS.add("g");
+        for (int i = 0; i < 7; i++) {
+            int characther = 'a' + i;
+            STRINGS.add((char)characther + "");
+        }
     }
 
     @Test
@@ -42,7 +34,7 @@ public class FullSequenceProblemTest {
                 FullSequenceProblem.permutationRecursively(STRINGS, counter));
             log.info(String.format("一共调用了%d次", counter[0]));
             log.info(String.format("结果字符串数量一共有：%d", result.size()));
-            log.info(result.toString());
+            // log.info(result.toString());
 
         });
 
@@ -58,7 +50,7 @@ public class FullSequenceProblemTest {
                 FullSequenceProblem.dpPermutation(STRINGS, counter));
             log.info(String.format("一共调用了%d次", counter[0]));
             log.info(String.format("结果字符串数量一共有：%d", result.size()));
-            log.info(result.toString());
+            // log.info(result.toString());
 
         });
 

@@ -26,7 +26,8 @@ public class FullSequenceProblem {
 
     /**
      * 这个算法的时间复杂度大概是O(n 的 n 次方) 超级大的指数时间
-     * @param strs 待字符串列表
+     *
+     * @param strs    待字符串列表
      * @param counter 计数器
      * @return 组合过的字符串的列表
      */
@@ -73,6 +74,7 @@ public class FullSequenceProblem {
      * @return 组合过的字符串的列表
      */
     private static List<String> dpPermutationReal(List<String> strs, int[] counter, Map<String, List<String>> memo) {
+
         checkAndIncrease(counter);
 
         if (null == strs || strs.size() == 0) {
