@@ -3,35 +3,48 @@ package com.magicliang.permutation;
 
 import com.magicliang.util.MathUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 全排列问题
  *
  * @author magicliang
- * @version $Id: FullSequenceProblem.java, v 0.1 2018年11月11日 18:55 magicliang Exp $
+ * @version $Id: PermutationProblem.java, v 0.1 2018年11月11日 18:55 magicliang Exp $
  */
-public class FullSequenceProblem {
+@Slf4j
+public class PermutationProblem {
+
+    public static void main(String[] args) {
+    }
 
     public static List<String> getUniqueStrs(List<String> strs) {
+
         return strs.stream().distinct().collect(Collectors.toList());
     }
 
     /**
      * 这个算法的时间复杂度大概是O(n 的 n 次方) 超级大的指数时间
-     *
+     * 如何让代码原地工作？
      * @param strs    待字符串列表
      * @param counter 计数器
      * @return 组合过的字符串的列表
      */
     public static List<String> permutationRecursively(List<String> strs, int[] counter) {
 
-        checkAndIncrease(counter);
-
         if (null == strs || strs.size() == 0) {
             return Collections.emptyList();
         }
+
+        checkAndIncrease(counter);
 
         int length = strs.size();
 
@@ -55,7 +68,11 @@ public class FullSequenceProblem {
     }
 
     public static List<String> dpPermutation(List<String> strs, int[] counter) {
-        Map<String, List<String>> memo = new HashMap<>();
+        if (null == strs || strs.size() == 0) {
+            return Collections.emptyList();
+        }
+
+        Map<String, List<String>> memo = new HashMap<>(MathUtil.caculateFactor(strs.size()));
         return dpPermutationReal(strs, counter, memo);
     }
 
@@ -70,10 +87,6 @@ public class FullSequenceProblem {
     private static List<String> dpPermutationReal(List<String> strs, int[] counter, Map<String, List<String>> memo) {
 
         checkAndIncrease(counter);
-
-        if (null == strs || strs.size() == 0) {
-            return Collections.emptyList();
-        }
 
         int length = strs.size();
 
@@ -105,7 +118,47 @@ public class FullSequenceProblem {
         }
 
         return result;
+    }
 
+    /**
+     * 这个方案其实等价于全递归，因为涉及到了重复的解。 优点是，不用构造 other string 数组，空间上更加优越。
+     *
+     * @param strs    待字符串列表
+     * @param counter 计数器
+     * @return 组合过的字符串的列表
+     */
+    public static List<String> switchPermutation(List<String> strs, int[] counter) {
+        if (null == strs || 0 == strs.size()) {
+            return Collections.EMPTY_LIST;
+        }
+
+        checkAndIncrease(counter);
+
+        int length = strs.size();
+
+        if (length == 1) {
+            return strs;
+        }
+
+        List<String> result = new ArrayList<>(MathUtil.caculateFactor(length));
+        // 先把问题简化一下，把所有待排列的第一位先排好
+        for (int i = 0; i < length; i++) {
+            // 交换当前的头结点和后续的几个结点
+            String temp = strs.get(0);
+            strs.set(0, strs.get(i));
+            strs.set(i, temp);
+
+            List<String> subResult = switchPermutation(strs.subList(1, length), counter);
+            for (String subString : subResult) {
+                result.add(strs.get(0) + subString);
+            }
+
+            //反转交换，再下一轮再交换一次
+            temp = strs.get(i);
+            strs.set(i, strs.get(0));
+            strs.set(0, temp);
+        }
+        return result;
     }
 
     /**

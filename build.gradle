@@ -16,6 +16,12 @@ repositories {
     jcenter()
 }
 
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 lombok {
     version = '1.18.4'
     // 不校验的化，数字指纹就设置为空
