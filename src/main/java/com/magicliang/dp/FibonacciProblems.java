@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Slf4j
 public class FibonacciProblems {
-    private static final ThreadLocal<List<Integer>> tlFib =
+    private static final ThreadLocal<List<Integer>> TL_FIB =
             ThreadLocal.withInitial(() -> new ArrayList<>(0));
 
     /**
@@ -94,7 +94,7 @@ public class FibonacciProblems {
     public static int topDownSolutionWithThreadLocal(int scale) {
 
         // 一种不使用 ThreadLocal的方案。即有一个主函数来初始化数组，并给真实调用的函数以县城封闭的数组。
-        List<Integer> fib = tlFib.get();
+        List<Integer> fib = TL_FIB.get();
         if (fib.isEmpty()) {
             for (int i = 0; i < scale; i++) {
                 fib.add(i, Integer.MIN_VALUE);

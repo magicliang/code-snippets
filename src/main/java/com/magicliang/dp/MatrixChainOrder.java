@@ -2,6 +2,7 @@ package com.magicliang.dp;
 
 import java.io.Serializable;
 
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version $Id: MatrixChainOrder.java, v 0.1 2018年11月10日 21:35 magicliang Exp $
  */
 @Slf4j
+@Data
 public class MatrixChainOrder implements Serializable {
 
     private static final long serialVersionUID = 6994787893092877314L;
@@ -23,42 +25,6 @@ public class MatrixChainOrder implements Serializable {
      * 它的行长度始终是要长于矩阵的数量，恰好等于矩阵的行列数组的长度
      */
     private int[][] kPosition;
-
-    /**
-     * Get min cost int [ ] [ ].
-     *
-     * @return the int [ ] [ ]
-     */
-    public int[][] getMinCost() {
-        return minCost;
-    }
-
-    /**
-     * Sets set min cost.
-     *
-     * @param minCost the min cost
-     */
-    public void setMinCost(int[][] minCost) {
-        this.minCost = minCost;
-    }
-
-    /**
-     * Get kPosition int [ ] [ ].
-     *
-     * @return the int [ ] [ ]
-     */
-    public int[][] getkPosition() {
-        return kPosition;
-    }
-
-    /**
-     * Sets set kPosition.
-     *
-     * @param kPosition the kPosition
-     */
-    public void setkPosition(int[][] kPosition) {
-        this.kPosition = kPosition;
-    }
 
     public void printOptimalOrder(int begin, int end) {
 
@@ -103,8 +69,7 @@ public class MatrixChainOrder implements Serializable {
     }
 
     private void print(String s) {
-        log(s);
-
+        log.info(s);
     }
 
     /**
@@ -127,7 +92,7 @@ public class MatrixChainOrder implements Serializable {
         int[][] minCost = getMatrixMemo(pCount);
         result.setMinCost(minCost);
         int[][] kPosition = getMatrixMemo(pCount);
-        result.setkPosition(kPosition);
+        result.setKPosition(kPosition);
 
         // 解决长度为0的矩阵链问题，为更高级问题做准备
         for (int i = 0; i <= matrixCount; i++) {
