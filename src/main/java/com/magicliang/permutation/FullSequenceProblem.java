@@ -3,20 +3,14 @@ package com.magicliang.permutation;
 
 import com.magicliang.util.MathUtil;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * È«ÅÅÁĞÎÊÌâ
+ * å…¨æ’åˆ—é—®é¢˜
  *
  * @author magicliang
- * @version $Id: FullSequenceProblem.java, v 0.1 2018Äê11ÔÂ11ÈÕ 18:55 magicliang Exp $
+ * @version $Id: FullSequenceProblem.java, v 0.1 2018å¹´11æœˆ11æ—¥ 18:55 magicliang Exp $
  */
 public class FullSequenceProblem {
 
@@ -25,11 +19,11 @@ public class FullSequenceProblem {
     }
 
     /**
-     * Õâ¸öËã·¨µÄÊ±¼ä¸´ÔÓ¶È´ó¸ÅÊÇO(n µÄ n ´Î·½) ³¬¼¶´óµÄÖ¸ÊıÊ±¼ä
+     * è¿™ä¸ªç®—æ³•çš„æ—¶é—´å¤æ‚åº¦å¤§æ¦‚æ˜¯O(n çš„ n æ¬¡æ–¹) è¶…çº§å¤§çš„æŒ‡æ•°æ—¶é—´
      *
-     * @param strs    ´ı×Ö·û´®ÁĞ±í
-     * @param counter ¼ÆÊıÆ÷
-     * @return ×éºÏ¹ıµÄ×Ö·û´®µÄÁĞ±í
+     * @param strs    å¾…å­—ç¬¦ä¸²åˆ—è¡¨
+     * @param counter è®¡æ•°å™¨
+     * @return ç»„åˆè¿‡çš„å­—ç¬¦ä¸²çš„åˆ—è¡¨
      */
     public static List<String> permutationRecursively(List<String> strs, int[] counter) {
 
@@ -45,9 +39,9 @@ public class FullSequenceProblem {
             return strs;
         }
 
-        // ¸ù¾İ³Ë·¨Ô­Àí£¬×ÓÎÊÌâµÄ¸´ÔÓ¶ÈÊÇÈ«ÅÅÁĞÊı£¬Ò²¾ÍÊÇ×ÓÎÊÌâ¹æÄ£µÄ½×³Ë
+        // æ ¹æ®ä¹˜æ³•åŸç†ï¼Œå­é—®é¢˜çš„å¤æ‚åº¦æ˜¯å…¨æ’åˆ—æ•°ï¼Œä¹Ÿå°±æ˜¯å­é—®é¢˜è§„æ¨¡çš„é˜¶ä¹˜
         int subProblemScale = MathUtil.caculateFactor(length - 1);
-        // Ö»¶Ô³¤¶È´óÓÚ2µÄ×Ö·û´®Çó½â
+        // åªå¯¹é•¿åº¦å¤§äº2çš„å­—ç¬¦ä¸²æ±‚è§£
         List<String> result = new ArrayList<>(subProblemScale);
         for (String basicString : strs) {
             List<String> others = getOtherStrList(strs, basicString);
@@ -66,12 +60,12 @@ public class FullSequenceProblem {
     }
 
     /**
-     * Ê¹ÓÃ dp µÄ±¸ÍüÂ¼À´½âÕâ¸öÎÊÌâ
+     * ä½¿ç”¨ dp çš„å¤‡å¿˜å½•æ¥è§£è¿™ä¸ªé—®é¢˜
      *
-     * @param strs    ´ı×Ö·û´®ÁĞ±í
-     * @param counter ¼ÆÊıÆ÷
-     * @param memo    ±¸ÍüÂ¼
-     * @return ×éºÏ¹ıµÄ×Ö·û´®µÄÁĞ±í
+     * @param strs    å¾…å­—ç¬¦ä¸²åˆ—è¡¨
+     * @param counter è®¡æ•°å™¨
+     * @param memo    å¤‡å¿˜å½•
+     * @return ç»„åˆè¿‡çš„å­—ç¬¦ä¸²çš„åˆ—è¡¨
      */
     private static List<String> dpPermutationReal(List<String> strs, int[] counter, Map<String, List<String>> memo) {
 
@@ -87,9 +81,9 @@ public class FullSequenceProblem {
             return strs;
         }
 
-        // ¸ù¾İ³Ë·¨Ô­Àí£¬×ÓÎÊÌâµÄ¸´ÔÓ¶ÈÊÇÈ«ÅÅÁĞÊı£¬Ò²¾ÍÊÇ×ÓÎÊÌâ¹æÄ£µÄ½×³Ë
+        // æ ¹æ®ä¹˜æ³•åŸç†ï¼Œå­é—®é¢˜çš„å¤æ‚åº¦æ˜¯å…¨æ’åˆ—æ•°ï¼Œä¹Ÿå°±æ˜¯å­é—®é¢˜è§„æ¨¡çš„é˜¶ä¹˜
         int subProblemScale = MathUtil.caculateFactor(length - 1);
-        // Ö»¶Ô³¤¶È´óÓÚ2µÄ×Ö·û´®Çó½â
+        // åªå¯¹é•¿åº¦å¤§äº2çš„å­—ç¬¦ä¸²æ±‚è§£
         List<String> result = new ArrayList<>(subProblemScale);
         for (String basicString : strs) {
             List<String> others = getOtherStrList(strs, basicString);
@@ -115,7 +109,7 @@ public class FullSequenceProblem {
     }
 
     /**
-     * Õâ¸öµØ·½Èç¹û×Ôµ×ÏòÉÏ£¬µ½µ×ÊÊ²»ÊÊºÏÊ¹ÓÃ dp£¿ÒòÎªËüÃ¿Ò»²ãµÄÑ¡Ôñ¶¼ÊÇ¶¯Ì¬±ä»¯µÄ¡£
+     * è¿™ä¸ªåœ°æ–¹å¦‚æœè‡ªåº•å‘ä¸Šï¼Œåˆ°åº•é€‚ä¸é€‚åˆä½¿ç”¨ dpï¼Ÿå› ä¸ºå®ƒæ¯ä¸€å±‚çš„é€‰æ‹©éƒ½æ˜¯åŠ¨æ€å˜åŒ–çš„ã€‚
      **/
 
     private static void checkAndIncrease(int[] counter) {
