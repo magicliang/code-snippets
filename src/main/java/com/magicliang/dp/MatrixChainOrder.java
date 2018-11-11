@@ -2,17 +2,26 @@ package com.magicliang.dp;
 
 import java.io.Serializable;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * ½â¾ö¾ØÕóÁ´Ïà³ËÎÊÌâ
+ * è§£å†³çŸ©é˜µé“¾ç›¸ä¹˜é—®é¢˜
  *
  * @author magicliang
- * @version $Id: MatrixChainOrder.java, v 0.1 2018Äê11ÔÂ10ÈÕ 21:35 magicliang Exp $
+ * @version $Id: MatrixChainOrder.java, v 0.1 2018å¹´11æœˆ10æ—¥ 21:35 magicliang Exp $
  */
+@Slf4j
 public class MatrixChainOrder implements Serializable {
 
     private static final long serialVersionUID = 6994787893092877314L;
 
+    /**
+     * å®ƒçš„è¡Œé•¿åº¦å§‹ç»ˆæ˜¯è¦é•¿äºçŸ©é˜µçš„æ•°é‡ï¼Œæ°å¥½ç­‰äºçŸ©é˜µçš„è¡Œåˆ—æ•°ç»„çš„é•¿åº¦
+     */
     private int[][] minCost;
+    /**
+     * å®ƒçš„è¡Œé•¿åº¦å§‹ç»ˆæ˜¯è¦é•¿äºçŸ©é˜µçš„æ•°é‡ï¼Œæ°å¥½ç­‰äºçŸ©é˜µçš„è¡Œåˆ—æ•°ç»„çš„é•¿åº¦
+     */
     private int[][] kPosition;
 
     /**
@@ -51,8 +60,55 @@ public class MatrixChainOrder implements Serializable {
         this.kPosition = kPosition;
     }
 
+    public void printOptimalOrder(int begin, int end) {
+
+        int matrixCount = minCost.length - 1;
+        if (end > matrixCount) {
+            throw new IllegalArgumentException("");
+        }
+
+        /**
+         * è‡ªé¡¶å‘ä¸‹åˆ†è§£
+         */
+
+        /**
+         * å¦‚æœå·²ç»åˆ°è¾¾äº†é“¾é•¿åº¦çš„æœ€å°å€¼ï¼ŒæŠŠå½“å‰çš„çŸ©é˜µæ‰“å‡ºæ¥
+         */
+        if (begin == end) {
+            print("A" + begin);
+
+        } else {
+            /**
+             * å¦åˆ™
+             * 1 å…ˆæŠŠå½“å‰çš„é“¾æ¡†èµ·æ¥
+             */
+            print("(");
+
+            /**
+             *  2 æ±‚å‡ºåˆ†å‰²ç‚¹
+             */
+            int k = kPosition[begin][end];
+
+            /**
+             * 3 è®©åˆ†å‰²ç‚¹è‡ªå·±å»æ¡†è‡ªå·±çš„é“¾
+             */
+            printOptimalOrder(begin, k);
+            printOptimalOrder(k + 1, end);
+
+            /**
+             * 4 å…ˆæŠŠå½“å‰çš„é“¾æ¡†èµ·æ¥
+             */
+            print(")");
+        }
+    }
+
+    private void print(String s) {
+        log(s);
+
+    }
+
     /**
-     *
+     * æ ¹æ®ä¸€ç³»åˆ—çŸ©é˜µçš„è¡Œåˆ—ç‚¹æ•°ç»„ï¼Œè¾“å‡ºçŸ©é˜µçš„æœ€ä¼˜æ’åº
      */
     public static MatrixChainOrder matrixChainOrder(int[] pArr) {
 
@@ -66,29 +122,30 @@ public class MatrixChainOrder implements Serializable {
         MatrixChainOrder result = new MatrixChainOrder();
 
         /**
-         * ¾ØÕóµãµÄÊıÁ¿±È¾ØÕóµÄÊıÁ¿¶à1£¬ÕâÑù¾Í¿ÉÒÔÊµÏÖ 1 basedµÄ¾ØÕó
+         * çŸ©é˜µç‚¹çš„æ•°é‡æ¯”çŸ©é˜µçš„æ•°é‡å¤š1ï¼Œè¿™æ ·å°±å¯ä»¥å®ç° 1 basedçš„çŸ©é˜µ
          */
         int[][] minCost = getMatrixMemo(pCount);
         result.setMinCost(minCost);
         int[][] kPosition = getMatrixMemo(pCount);
         result.setkPosition(kPosition);
 
-        // ½â¾ö³¤¶ÈÎª0µÄ¾ØÕóÁ´ÎÊÌâ£¬Îª¸ü¸ß¼¶ÎÊÌâ×ö×¼±¸
+        // è§£å†³é•¿åº¦ä¸º0çš„çŸ©é˜µé“¾é—®é¢˜ï¼Œä¸ºæ›´é«˜çº§é—®é¢˜åšå‡†å¤‡
         for (int i = 0; i <= matrixCount; i++) {
             minCost[i][i] = 0;
         }
 
-        // Ê×ÏÈ¶¨Òå½âµÄ³¤¶È·¶³ë£¬´Ó³¤¶È2¿ªÊ¼¼ÆËã£¬Ò»Ö±µ½³¤¶È matrixCount
+        // é¦–å…ˆå®šä¹‰è§£çš„é•¿åº¦èŒƒç•´ï¼Œä»é•¿åº¦2å¼€å§‹è®¡ç®—ï¼Œä¸€ç›´åˆ°é•¿åº¦ matrixCount
         for (int chainLength = 2; chainLength <= matrixCount; chainLength++) {
-            // ¶¨ÒåÁ´µÄÆğµã
+            // å®šä¹‰é“¾çš„èµ·ç‚¹
             for (int i = 1; i <= matrixCount - chainLength + 1; i++) {
-                // ¶¨ÒåÁ´µÄÖÕµã
+                // å®šä¹‰é“¾çš„ç»ˆç‚¹
                 int j = i + chainLength - 1;
                 minCost[i][j] = Integer.MAX_VALUE;
                 for (int k = i; k < j; k++) {
                     int q = minCost[i][k] + minCost[k + 1][j] + pArr[i - 1] * pArr[k] * pArr[j];
                     if (q < minCost[i][j]) {
                         minCost[i][j] = q;
+                        kPosition[i][j] = k;
                     }
                 }
             }

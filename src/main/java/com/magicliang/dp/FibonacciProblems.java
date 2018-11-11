@@ -1,23 +1,26 @@
 package com.magicliang.dp;
 
+import groovy.util.logging.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ÓÃ dp À´½âì³²¨ÄÇÆõÎÊÌâ
+ * ç”¨ dp æ¥è§£æ–æ³¢é‚£å¥‘é—®é¢˜
  *
  * @author magicliang
- * @version $Id: FibonacciProblems.java, v 0.1 2018Äê11ÔÂ04ÈÕ 21:33 magicliang Exp $
+ * @version $Id: FibonacciProblems.java, v 0.1 2018å¹´11æœˆ04æ—¥ 21:33 magicliang Exp $
  */
+@Slf4j
 public class FibonacciProblems {
     private static final ThreadLocal<List<Integer>> tlFib =
             ThreadLocal.withInitial(() -> new ArrayList<>(0));
 
     /**
-     * ÆÕÍ¨µİ¹é½â
+     * æ™®é€šé€’å½’è§£
      *
-     * @param scale ÎÊÌâ¹æÄ£
-     * @return ÊıÁĞµÚ n Î» Öµ
+     * @param scale é—®é¢˜è§„æ¨¡
+     * @return æ•°åˆ—ç¬¬ n ä½ å€¼
      */
     public static int classicalSolution(int scale) {
 
@@ -33,10 +36,10 @@ public class FibonacciProblems {
     }
 
     /**
-     * »ùÓÚ×Ô¶¥ÏòÏÂµÄ¶¯Ì¬¹æ»®µÄ½â
+     * åŸºäºè‡ªé¡¶å‘ä¸‹çš„åŠ¨æ€è§„åˆ’çš„è§£
      *
-     * @param scale ÎÊÌâ¹æÄ£
-     * @return ÊıÁĞµÚ n Î» Öµ
+     * @param scale é—®é¢˜è§„æ¨¡
+     * @return æ•°åˆ—ç¬¬ n ä½ å€¼
      */
     public static int topDownSolution(int scale) {
 
@@ -44,8 +47,7 @@ public class FibonacciProblems {
             throw new IllegalArgumentException("scale must be greater than 0!");
         }
 
-
-        // Ò»ÖÖ²»Ê¹ÓÃ ThreadLocalµÄ·½°¸¡£¼´ÓĞÒ»¸öÖ÷º¯ÊıÀ´³õÊ¼»¯Êı×é£¬²¢¸øÕæÊµµ÷ÓÃµÄº¯ÊıÒÔÏØ³Ç·â±ÕµÄÊı×é¡£
+        // ä¸€ç§ä¸ä½¿ç”¨ ThreadLocalçš„æ–¹æ¡ˆã€‚å³æœ‰ä¸€ä¸ªä¸»å‡½æ•°æ¥åˆå§‹åŒ–æ•°ç»„ï¼Œå¹¶ç»™çœŸå®è°ƒç”¨çš„å‡½æ•°ä»¥å¿åŸå°é—­çš„æ•°ç»„ã€‚
         int[] fib = new int[scale];
 
         for (int i = 0; i < scale; i++) {
@@ -62,7 +64,7 @@ public class FibonacciProblems {
         if (scale == 1 || scale == 2) {
             result = 1;
             fib[fibIndex] = result;
-            // System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+            // System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
             return result;
         }
 
@@ -85,13 +87,13 @@ public class FibonacciProblems {
         }
 
         result = subResult1 + subResult2;
-        // System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+        // System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
         return result;
     }
 
     public static int topDownSolutionWithThreadLocal(int scale) {
 
-        // Ò»ÖÖ²»Ê¹ÓÃ ThreadLocalµÄ·½°¸¡£¼´ÓĞÒ»¸öÖ÷º¯ÊıÀ´³õÊ¼»¯Êı×é£¬²¢¸øÕæÊµµ÷ÓÃµÄº¯ÊıÒÔÏØ³Ç·â±ÕµÄÊı×é¡£
+        // ä¸€ç§ä¸ä½¿ç”¨ ThreadLocalçš„æ–¹æ¡ˆã€‚å³æœ‰ä¸€ä¸ªä¸»å‡½æ•°æ¥åˆå§‹åŒ–æ•°ç»„ï¼Œå¹¶ç»™çœŸå®è°ƒç”¨çš„å‡½æ•°ä»¥å¿åŸå°é—­çš„æ•°ç»„ã€‚
         List<Integer> fib = tlFib.get();
         if (fib.isEmpty()) {
             for (int i = 0; i < scale; i++) {
@@ -105,7 +107,8 @@ public class FibonacciProblems {
         if (scale == 1 || scale == 2) {
             result = 1;
             fib.set(fibIndex, result);
-            System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+
+            System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
             return result;
         }
 
@@ -128,9 +131,9 @@ public class FibonacciProblems {
         }
 
         result = subResult1 + subResult2;
-        System.out.println("¼ÆËãÏî£º" + scale + "£¬½á¹û£º" + result);
+        System.out.println("è®¡ç®—é¡¹ï¼š" + scale + "ï¼Œç»“æœï¼š" + result);
 
-        // TODO: Ê²Ã´Ê±ºòclear threadLocal
+        // TODO: ä»€ä¹ˆæ—¶å€™clear threadLocal
         return result;
     }
 

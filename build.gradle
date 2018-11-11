@@ -3,6 +3,7 @@ plugins {
     id 'groovy'
     // 使用了 java 插件就会有 java 的 main 文件夹
     id 'java'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
 }
 
 group 'com.magicliang'
@@ -12,6 +13,13 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
+}
+
+lombok {
+    version = '1.18.4'
+    // 不校验的化，数字指纹就设置为空
+    sha256 = ""
 }
 
 dependencies {

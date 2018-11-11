@@ -41,5 +41,6 @@ public class MatrixChainOrderTest {
 
         Assert.assertEquals(0, result.getMinCost()[6][6]);
 
+        result.printOptimalOrder(1, 6);
     }
 }
