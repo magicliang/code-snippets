@@ -1,7 +1,7 @@
-/**
- * Alipay.com Inc. Copyright (c) 2004-2018 All Rights Reserved.
- */
+
 package com.magicliang.sequence;
+
+import com.magicliang.util.MathUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +20,19 @@ public class FullSequenceProblem {
         return strs.stream().distinct().collect(Collectors.toList());
     }
 
-    public static List<String> getFullSequanceRecursively(List<String> strs) {
+    /**
+     * 这个算法的时间复杂度大概是O(n 的 n 次方) 超级大的指数时间
+     *
+     * @param strs 原字符串组合
+     * @return 字符串排列
+     */
+    public static List<String> getFullSequanceRecursively(List<String> strs, int[] counter) {
+
+        if (null == counter || counter.length != 1) {
+            throw new IllegalArgumentException("There must be only one counter");
+        }
+
+        counter[0] = ++counter[0];
 
         if (null == strs || strs.size() == 0) {
             return Collections.emptyList();
@@ -32,12 +44,14 @@ public class FullSequenceProblem {
             return strs;
         }
 
+        // 根据乘法原理，子问题的复杂度是全排列数，也就是子问题规模的阶乘
+        int subProblemScale = MathUtil.caculateFactor(length - 1);
         // 只对长度大于2的字符串求解
-        List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<>(subProblemScale);
         for (String basicString : strs) {
             List<String> others = getOtherStrList(strs, basicString);
 
-            for (String newStr : getFullSequanceRecursively(others)) {
+            for (String newStr : getFullSequanceRecursively(others, counter)) {
                 result.add(basicString + newStr);
             }
         }
@@ -57,5 +71,7 @@ public class FullSequenceProblem {
 
         return result;
     }
+
+
 
 }
