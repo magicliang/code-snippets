@@ -1,10 +1,10 @@
 package com.magicliang.util;
 
 /**
- * Ò»Ð©ÊýÑ§¹¤¾ß
+ * ä¸€äº›æ•°å­¦å·¥å…·
  *
  * @author magicliang
- * @version $Id: MathUtil.java, v 0.1 2018Äê11ÔÂ11ÈÕ 19:51 magicliang Exp $
+ * @version $Id: MathUtil.java, v 0.1 2018å¹´11æœˆ11æ—¥ 19:51 magicliang Exp $
  */
 public class MathUtil {
 
