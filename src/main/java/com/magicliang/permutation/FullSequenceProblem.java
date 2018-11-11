@@ -114,6 +114,10 @@ public class FullSequenceProblem {
 
     }
 
+    /**
+     * 这个地方如果自底向上，到底适不适合使用 dp？因为它每一层的选择都是动态变化的。
+     **/
+
     private static void checkAndIncrease(int[] counter) {
         if (null == counter || counter.length != 1) {
             throw new IllegalArgumentException("There must be only one counter");
