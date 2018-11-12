@@ -37,8 +37,6 @@ public class PermutationProblemTest {
             log.info(result.toString());
 
         });
-        log.info("周星驰");
-
         log.info("递归求解字符串全集合结束");
     }
 
