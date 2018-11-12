@@ -30,6 +30,7 @@ public class CombinationProblem {
         List<String> result = new ArrayList<>(combinationSize);
         String head = args.get(0);
         // 组合其实是无放回的过程，所以千万不要试着用 for 循环来逐一对子问题进行切割，那必然引入重叠子问题。
+        // 这种组合方式因为无重叠子问题，所以实际上是无法用 dp 来解的。
         List<String> combination = combination(args.subList(1, length), combinationSize - 1);
         for (String subStr : combination) {
             result.add(head + subStr);

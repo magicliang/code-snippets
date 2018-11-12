@@ -1,6 +1,7 @@
 
 package com.magicliang.permutation;
 
+import com.magicliang.util.CollectionUtil;
 import com.magicliang.util.MathUtil;
 
 import java.util.ArrayList;
@@ -144,9 +145,7 @@ public class PermutationProblem {
         // 先把问题简化一下，把所有待排列的第一位先排好
         for (int i = 0; i < length; i++) {
             // 交换当前的头结点和后续的几个结点
-            String temp = strs.get(0);
-            strs.set(0, strs.get(i));
-            strs.set(i, temp);
+            CollectionUtil.swapListItem(strs, 0, i);
 
             List<String> subResult = switchPermutation(strs.subList(1, length), counter);
             for (String subString : subResult) {
@@ -154,9 +153,7 @@ public class PermutationProblem {
             }
 
             //反转交换，再下一轮再交换一次
-            temp = strs.get(i);
-            strs.set(i, strs.get(0));
-            strs.set(0, temp);
+            CollectionUtil.swapListItem(strs, 0, i);
         }
         return result;
     }
