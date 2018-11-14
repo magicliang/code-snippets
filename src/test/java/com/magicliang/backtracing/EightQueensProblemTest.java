@@ -11,7 +11,7 @@ public class EightQueensProblemTest {
     @Test
     public void getQueens() {
 
-        EightQueensProblem queensProblem = EightQueensProblem.buildQueens(4);
+        EightQueensProblem queensProblem = EightQueensProblem.buildQueens(8);
 
         Assert.assertEquals(92, queensProblem.getQueens().size());
     }
