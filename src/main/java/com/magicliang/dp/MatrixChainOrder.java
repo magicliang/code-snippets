@@ -1,9 +1,9 @@
 package com.magicliang.dp;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-
-import java.io.Serializable;
 
 /**
  * 解决矩阵链相乘问题
@@ -27,7 +27,9 @@ public class MatrixChainOrder implements Serializable {
     private int[][] kPosition;
 
     public void printOptimalOrder(int begin, int end) {
-
+        if (null == minCost || null == kPosition) {
+            throw new IllegalArgumentException("unable to print, minCost or kPosition is null");
+        }
         int matrixCount = minCost.length - 1;
         if (end > matrixCount) {
             throw new IllegalArgumentException("");
@@ -90,13 +92,13 @@ public class MatrixChainOrder implements Serializable {
          * 初始化最优解的值的备忘录
          * 矩阵点的数量比矩阵的数量多1，这样就可以实现 1 based 的备忘录
          */
-        int[][] minCost = getMatrixMemo(pointCount);
+        int[][] minCost = new int[pointCount][pointCount];
         result.setMinCost(minCost);
 
         /**
          * 初始化最优解的分割法的备忘录
          */
-        int[][] kPosition = getMatrixMemo(pointCount);
+        int[][] kPosition = new int[pointCount][pointCount];
         result.setKPosition(kPosition);
 
         // 解决长度为0的矩阵链问题，为更高级问题做准备
@@ -136,9 +138,9 @@ public class MatrixChainOrder implements Serializable {
         /**
          * 矩阵点的数量比矩阵的数量多1，这样就可以实现 1 based的矩阵
          */
-        int[][] minCost = getMatrixMemo(pointCount);
+        int[][] minCost = new int[pointCount][pointCount];
         result.setMinCost(minCost);
-        int[][] kPosition = getMatrixMemo(pointCount);
+        int[][] kPosition = new int[pointCount][pointCount];
         result.setKPosition(kPosition);
 
         int matrixCount = pointCount - 1;
@@ -185,12 +187,4 @@ public class MatrixChainOrder implements Serializable {
         return result;
     }
 
-    private static int[][] getMatrixMemo(int pCount) {
-        int[][] memo = new int[pCount][];
-        for (int i = 0; i < pCount; i++) {
-            int[] row = new int[pCount];
-            memo[i] = row;
-        }
-        return memo;
-    }
 }

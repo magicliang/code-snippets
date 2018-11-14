@@ -37,18 +37,13 @@ public class LCSProblem {
         LCSProblem lcs = new LCSProblem();
 
         // 初始化结果矩阵
-        int[][] lcsMatrix = new int[matrixRowCount][];
-        String[][] lcsSolutionMatrix = new String[matrixRowCount][];
+        int[][] lcsMatrix = new int[matrixRowCount][matrixColumnCount];
+        String[][] lcsSolutionMatrix = new String[matrixRowCount][matrixColumnCount];
 
         lcs.setSequenceA(sequenceA);
         lcs.setSequenceB(sequenceB);
         lcs.setLcsMatrix(lcsMatrix);
         lcs.setLcsSolutionMatrix(lcsSolutionMatrix);
-
-        for (int i = 0; i < matrixRowCount; i++) {
-            lcsMatrix[i] = new int[matrixColumnCount];
-            lcsSolutionMatrix[i] = new String[matrixColumnCount];
-        }
 
         // 解决 i == 0 或者 j == 0 的子问题
         for (int i = 0; i < matrixRowCount; i++) {
