@@ -144,6 +144,7 @@ public class PermutationProblem {
         List<String> result = new ArrayList<>(MathUtil.caculateFactor(length));
         // 先把问题简化一下，把所有待排列的第一位先排好
         for (int i = 0; i < length; i++) {
+            // 这里这个交换，和反交换，实质上就起到了 getOtherStrList 的作用
             // 交换当前的头结点和后续的几个结点
             CollectionUtil.swapListItem(strs, 0, i);
 

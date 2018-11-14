@@ -13,6 +13,7 @@ import java.util.List;
 public class CombinationProblem {
 
     public static List<String> combination(List<String> args, int combinationSize) {
+        // 有多少个参数，就有多少个地方要做防御性编程检查
         if (null == args || 0 == args.size()) {
             return Collections.EMPTY_LIST;
         }
@@ -22,6 +23,7 @@ public class CombinationProblem {
             throw new IllegalArgumentException("combinationSize can not be greater than args size.");
         }
 
+        // 有多少个参数，就有多少个地方要提前终止
         // 如果数组走到尽头，或者排列数走到尽头
         if (1 == length || combinationSize == 1) {
             return args;
