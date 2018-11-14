@@ -38,6 +38,7 @@ public class LCSProblem {
 
         // 初始化结果矩阵
         int[][] lcsMatrix = new int[matrixRowCount][matrixColumnCount];
+        // 直接被初始化的二维数组的值总是缺省值，也就是 null
         String[][] lcsSolutionMatrix = new String[matrixRowCount][matrixColumnCount];
 
         lcs.setSequenceA(sequenceA);

@@ -7,7 +7,7 @@ import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * ²âÊÔ lcs ½â·¨
+ * æµ‹è¯• lcs è§£æ³•
  *
  * @author liangchuan
  */

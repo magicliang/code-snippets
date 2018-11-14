@@ -17,7 +17,7 @@ public class MatrixUtil {
         int rowCount = matrix.length;
         for (int i = 0; i < rowCount; i++) {
             String[] row = matrix[i];
-            if (null == row) {
+            if (null != row) {
                 int columnCount = row.length;
                 StringBuilder result = new StringBuilder(columnCount);
                 for (int j = 0; j < columnCount; j++) {
