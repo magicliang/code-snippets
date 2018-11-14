@@ -1,5 +1,6 @@
 package com.magicliang.util;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -9,6 +10,10 @@ import java.util.List;
  * @version $Id: CollectionUtil.java, v 0.1 2018Äê11ÔÂ13ÈÕ 0:06 LC Exp $
  */
 public class CollectionUtil {
+
+    public static boolean isEmpty(Collection collection) {
+        return (null == collection) || collection.isEmpty();
+    }
 
     public static <T> List<T> swapListItem(List<T> list, int i, int j) {
         checkBoundaries(list, "i", i);
