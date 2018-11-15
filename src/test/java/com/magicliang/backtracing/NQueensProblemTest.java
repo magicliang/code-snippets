@@ -6,12 +6,12 @@ import org.junit.Test;
 /**
  * @author liangchuan
  */
-public class EightQueensProblemTest {
+public class NQueensProblemTest {
 
     @Test
     public void getQueens() {
 
-        EightQueensProblem queensProblem = EightQueensProblem.buildQueens(8);
+        NQueensProblem queensProblem = NQueensProblem.buildQueens(8);
 
         Assert.assertEquals(92, queensProblem.getQueens().size());
     }

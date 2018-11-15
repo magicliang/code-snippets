@@ -11,11 +11,11 @@ import lombok.extern.slf4j.Slf4j;
  * 解决八皇后问题
  *
  * @author magicliang
- * @version $Id: EightQueensProblem.java, v 0.1 2018年11月14日 20:12 magicliang Exp $
+ * @version $Id: NQueensProblem.java, v 0.1 2018年11月14日 20:12 magicliang Exp $
  */
 @Slf4j
 @NoArgsConstructor
-public class EightQueensProblem {
+public class NQueensProblem {
 
     private List<int[]> queens;
 
@@ -24,17 +24,17 @@ public class EightQueensProblem {
     @Setter
     private int num;
 
-    public static EightQueensProblem buildQueens(int num) {
+    public static NQueensProblem buildQueens(int num) {
         // 实际上只有四皇后以上才有解
         if (num <= 0) {
             throw new IllegalArgumentException("num can not be negative");
         }
 
         //
-        EightQueensProblem eightQueensProblem = new EightQueensProblem();
-        eightQueensProblem.setNum(num);
+        NQueensProblem nQueensProblem = new NQueensProblem();
+        nQueensProblem.setNum(num);
 
-        return eightQueensProblem;
+        return nQueensProblem;
     }
 
     /**
