@@ -66,15 +66,16 @@ public class EightQueensProblem {
 
         // 穷举遍本行内所有的列
         for (int column = 0; column < num; column++) {
-            matrix[row][column] = 1;
 
             // 假设这一个格子是正常的
             if (noConflict(row, column)) {
+                matrix[row][column] = 1;
                 // 可以试着解决下一行的下一个子问题
                 getQueenReal(row + 1);
+                // 无论如何，恢复这一矩阵这一位置。回溯也就是在这一步。
+                matrix[row][column] = 0;
             }
-            // 无论如何，恢复这一矩阵这一位置
-            matrix[row][column] = 0;
+
         }
     }
 
@@ -96,29 +97,27 @@ public class EightQueensProblem {
         // 只做一个嵌套向上查询，看看有没有纵横相关联的点
         for (int i = row; i >= 0; i--) {
             for (int j = 0; j < num; j++) {
-                // 绕开已经有值的点
-                if (row != i && column != j) {
-                    // 同行不同列冲突
-                    if (matrix[row][j] == 1) {
-                        return false;
-                    }
-                    // 同列不同行冲突
-                    if (matrix[i][column] == 1) {
-                        return false;
-                    }
-                    int rowDelta = row - i;
-                    int columnDelta = column - j;
 
-                    if (columnDelta < 0) {
-                        columnDelta = columnDelta * -1;
-                    }
-                    // 在同一个斜线上
-                    if (rowDelta == columnDelta && matrix[i][j] == 1) {
-                        return false;
-                    }
+                // 同行不同列冲突
+                if (matrix[row][j] == 1) {
+                    return false;
                 }
+                // 同列不同行冲突
+                if (matrix[i][column] == 1) {
+                    return false;
+                }
+                int rowDelta = row - i;
+                int columnDelta = column - j;
 
+                if (columnDelta < 0) {
+                    columnDelta = columnDelta * -1;
+                }
+                // 在同一个斜线上
+                if (rowDelta == columnDelta && matrix[i][j] == 1) {
+                    return false;
+                }
             }
+
         }
 
         // 这里不验证下方的数据，是因为目前只有上方有了问题的解
