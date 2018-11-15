@@ -70,7 +70,7 @@ public class EightQueensProblem {
             // 假设这一个格子是正常的
             if (noConflict(row, column)) {
                 matrix[row][column] = 1;
-                // 可以试着解决下一行的下一个子问题
+                // 可以试着解决下一行的下一个子问题。回溯法的本质，就是 DFS。
                 getQueenReal(row + 1);
                 // 无论如何，恢复这一矩阵这一位置。回溯也就是在这一步。
                 matrix[row][column] = 0;
@@ -94,14 +94,16 @@ public class EightQueensProblem {
 
     private boolean noConflict(int row, int column) {
 
-        // 只做一个嵌套向上查询，看看有没有纵横相关联的点
-        for (int i = row; i >= 0; i--) {
+        // 从上往下扫行，直至当前行
+        for (int i = 0; i <= row; i++) {
+            // 从左到右扫列，直至尽头
             for (int j = 0; j < num; j++) {
 
-                // 同行不同列冲突
-                if (matrix[row][j] == 1) {
-                    return false;
-                }
+                // 因为这是一个 dfs，所以并不存在同一行的其他元素，这一个判断步骤可以省略掉
+                //// 同行不同列冲突
+                //if (matrix[row][j] == 1) {
+                //    return false;
+                //}
                 // 同列不同行冲突
                 if (matrix[i][column] == 1) {
                     return false;
