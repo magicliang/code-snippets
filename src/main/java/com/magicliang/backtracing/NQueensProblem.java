@@ -39,4 +39,37 @@ public class NQueensProblem {
             }
         }
     }
+
+    protected static void checkQueenNum(int num) {
+        // 实际上只有四皇后以上才有解
+        if (num <= 0) {
+            throw new IllegalArgumentException("num can not be negative");
+        }
+    }
+
+    protected static boolean noConflict(int[] solution, int row, int column) {
+        // 只检查已经赋值的 其他row
+        for (int existRow = 0; existRow < row; existRow++) {
+            // 存在同行或者同列的值
+            int existColumn = solution[existRow];
+            if (existRow == row || existColumn == column) {
+                return false;
+            }
+
+            int columnDelta = column - existColumn;
+            //如果存在同一对角线上的皇后
+            if (Math.abs(columnDelta) == row - existRow) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    protected static void initSolution(int[] solution) {
+        int length = solution.length;
+        for (int i = 0; i < length; i++) {
+            solution[i] = -1;
+        }
+    }
+
 }

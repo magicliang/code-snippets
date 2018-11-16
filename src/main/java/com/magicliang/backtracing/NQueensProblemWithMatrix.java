@@ -25,10 +25,7 @@ public class NQueensProblemWithMatrix extends NQueensProblem {
      * @return 解
      */
     public static NQueensProblemWithMatrix buildQueens(int num) {
-        // 实际上只有四皇后以上才有解
-        if (num <= 0) {
-            throw new IllegalArgumentException("num can not be negative");
-        }
+        checkQueenNum(num);
 
         NQueensProblemWithMatrix nQueensProblemWithMatrix = new NQueensProblemWithMatrix();
         nQueensProblemWithMatrix.setNum(num);
