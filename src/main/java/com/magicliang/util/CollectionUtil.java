@@ -12,7 +12,7 @@ import java.util.List;
 public class CollectionUtil {
 
     public static boolean isEmpty(Collection collection) {
-        return (null == collection) || collection.isEmpty();
+        return null == collection || collection.isEmpty();
     }
 
     public static <T> List<T> swapListItem(List<T> list, int i, int j) {
