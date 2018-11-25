@@ -1,5 +1,5 @@
 
-package com.magicliang.algorithm.util;
+package com.magicliang.util;
 
 /**
  * ×Ö·û´®¹¤¾ß

@@ -1,13 +1,13 @@
-package com.magicliang.algorithm.util;
+package com.magicliang.util;
 
 import java.util.Collection;
 import java.util.List;
 
 /**
- * ¶Ô¼¯ºÏ²Ù×÷µÄ¹¤¾ßÀà
+ * å¯¹é›†åˆæ“ä½œçš„å·¥å…·ç±»
  *
  * @author LC
- * @version $Id: CollectionUtil.java, v 0.1 2018Äê11ÔÂ13ÈÕ 0:06 LC Exp $
+ * @version $Id: CollectionUtil.java, v 0.1 2018å¹´11æœˆ13æ—¥ 0:06 LC Exp $
  */
 public class CollectionUtil {
 

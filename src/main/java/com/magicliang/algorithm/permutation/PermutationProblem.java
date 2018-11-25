@@ -1,7 +1,7 @@
 package com.magicliang.algorithm.permutation;
 
-import com.magicliang.algorithm.util.CollectionUtil;
-import com.magicliang.algorithm.util.MathUtil;
+import com.magicliang.util.CollectionUtil;
+import com.magicliang.util.MathUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;

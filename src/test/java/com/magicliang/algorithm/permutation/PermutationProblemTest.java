@@ -1,6 +1,6 @@
 package com.magicliang.algorithm.permutation;
 
-import com.magicliang.algorithm.util.TimeWatchUtil;
+import com.magicliang.util.TimeWatchUtil;
 
 import org.junit.Test;
 

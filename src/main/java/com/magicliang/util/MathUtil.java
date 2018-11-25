@@ -1,4 +1,4 @@
-package com.magicliang.algorithm.util;
+package com.magicliang.util;
 
 /**
  * 一些数学工具

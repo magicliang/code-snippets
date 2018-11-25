@@ -1,6 +1,6 @@
 package com.magicliang.algorithm.dp;
 
-import com.magicliang.algorithm.util.MatrixUtil;
+import com.magicliang.util.MatrixUtil;
 
 import org.junit.Test;
 

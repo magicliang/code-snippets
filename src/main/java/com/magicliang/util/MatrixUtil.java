@@ -1,4 +1,4 @@
-package com.magicliang.algorithm.util;
+package com.magicliang.util;
 
 import lombok.extern.slf4j.Slf4j;
 
