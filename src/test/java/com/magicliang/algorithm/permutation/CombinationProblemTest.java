@@ -28,8 +28,8 @@ public class CombinationProblemTest {
         TimeWatchUtil.watch(() -> {
             List<String> result =
                 CombinationProblem.combination(STRINGS, 3);
-            //log.info(String.format("Ò»¹²µ÷ÓÃÁË%d´Î", counter[0]));
-            log.info(String.format("½á¹û×Ö·û´®ÊıÁ¿Ò»¹²ÓĞ£º%d", result.size()));
+            //log.info(String.format("ä¸€å…±è°ƒç”¨äº†%dæ¬¡", counter[0]));
+            log.info(String.format("ç»“æœå­—ç¬¦ä¸²æ•°é‡ä¸€å…±æœ‰ï¼š%d", result.size()));
             log.info(result.toString());
 
         });
