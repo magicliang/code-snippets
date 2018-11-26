@@ -20,7 +20,7 @@ public class MaximumSubArrayProblem {
         if (1 == length) {
             return array;
         }
-        array = generatePaddingArray(array);
+        //array = generatePaddingArray(array);
 
         return getMaximumSubArrayReal(array, 1, length);
     }
@@ -34,12 +34,12 @@ public class MaximumSubArrayProblem {
     }
 
     private static int[] getMaximumSubArrayReal(int[] array, int begin, int end) {
-        int length = end - begin;
-        if (0 == length) {
+        int delta = end - begin;
+        if (0 == delta) {
             return array;
         }
-        // 以 1 为底的数组，mid 总是偏左
-        int mid = begin + length / 2;
+        // 差值 delta / 2 总是偏左的结果
+        int mid = begin + delta / 2;
         int[] lowResult = getMaximumSubArrayReal(array, begin, mid);
         int[] highResult = getMaximumSubArrayReal(array, mid + 1, end);
         int[] acrossMidResult = getMaximumSubArrayAcrossMid(array, mid);
