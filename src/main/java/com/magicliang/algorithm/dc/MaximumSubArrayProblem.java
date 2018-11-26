@@ -78,6 +78,7 @@ public class MaximumSubArrayProblem {
                 maxJ = j;
             }
 
+            // 提前终止游标
             if (j < length - 1) {
                 j++;
             }
@@ -86,11 +87,13 @@ public class MaximumSubArrayProblem {
                 i--;
             }
 
+            // 两个游标都越界了，则可以正式终止 while 循环。
             if (i == 0 && j == length - 1) {
                 break;
             }
         }
 
+        // 要按照最原始的 maxI， maxJ 来求值。
         return Arrays.copyOfRange(array, maxI, maxJ);
     }
 
