@@ -20,17 +20,27 @@ public class MaximumSubArrayProblem {
         if (1 == length) {
             return array;
         }
+        array = generatePaddingArray(array);
 
-        return getMaximumSubArrayReal(array, 0, length);
+        return getMaximumSubArrayReal(array, 1, length);
+    }
+
+    private static int[] generatePaddingArray(int[] array) {
+        int length = array.length;
+        int[] result = new int[length + 1];
+        result[0] = 0;
+        System.arraycopy(array, 0, result, 0, length);
+        return result;
     }
 
     private static int[] getMaximumSubArrayReal(int[] array, int begin, int end) {
         int length = end - begin;
-        if (1 == length) {
+        if (0 == length) {
             return array;
         }
-        int mid = length / 2;
-        int[] lowResult = getMaximumSubArrayReal(array, begin, mid + 1);
+        // 以 1 为底的数组，mid 总是偏左
+        int mid = begin + length / 2;
+        int[] lowResult = getMaximumSubArrayReal(array, begin, mid);
         int[] highResult = getMaximumSubArrayReal(array, mid + 1, end);
         int[] acrossMidResult = getMaximumSubArrayAcrossMid(array, mid);
 
@@ -68,18 +78,20 @@ public class MaximumSubArrayProblem {
                 maxJ = j;
             }
 
-            if (i < length) {
-                i++;
+            if (j < length - 1) {
+                j++;
             }
 
-            if (j >= 0) {
-                j--;
+            if (i > 0) {
+                i--;
             }
-            if (i == length && j < 0) {
+
+            if (i == 0 && j == length - 1) {
                 break;
             }
         }
-        return Arrays.copyOfRange(array, maxI, maxJ + 1);
+
+        return Arrays.copyOfRange(array, maxI, maxJ);
     }
 
     /**
