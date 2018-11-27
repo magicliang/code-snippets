@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class MaximumSubArrayProblem {
 
-    public static int[] getMaximumSubArray(int[] array) {
+    public static Integer[] getMaximumSubArray(Integer[] array) {
         if (ArrayUtil.isEmpty(array)) {
             return null;
         }
@@ -25,7 +25,7 @@ public class MaximumSubArrayProblem {
         return getMaximumSubArrayReal(array, 1, length);
     }
 
-    private static int[] generatePaddingArray(int[] array) {
+    private static int[] generatePaddingArray(Integer[] array) {
         int length = array.length;
         int[] result = new int[length + 1];
         result[0] = 0;
@@ -33,25 +33,25 @@ public class MaximumSubArrayProblem {
         return result;
     }
 
-    private static int[] getMaximumSubArrayReal(int[] array, int begin, int end) {
+    private static Integer[] getMaximumSubArrayReal(Integer[] array, int begin, int end) {
         int delta = end - begin;
         if (0 == delta) {
             return array;
         }
         // 差值 delta / 2 总是偏左的结果
         int mid = begin + delta / 2;
-        int[] lowResult = getMaximumSubArrayReal(array, begin, mid);
-        int[] highResult = getMaximumSubArrayReal(array, mid + 1, end);
-        int[] acrossMidResult = getMaximumSubArrayAcrossMid(array, mid);
+        Integer[] lowResult = getMaximumSubArrayReal(array, begin, mid);
+        Integer[] highResult = getMaximumSubArrayReal(array, mid + 1, end);
+        Integer[] acrossMidResult = getMaximumSubArrayAcrossMid(array, mid);
 
-        int[] result = getHighestValueArray(new int[][] {lowResult, highResult, acrossMidResult});
+        Integer[] result = getHighestValueArray(new Integer[][] {lowResult, highResult, acrossMidResult});
         return result;
     }
 
-    private static int[] getHighestValueArray(int[][] arrays) {
+    private static Integer[] getHighestValueArray(Integer[][] arrays) {
         int maxValue = Integer.MIN_VALUE;
-        int[] maxArray = null;
-        for (int[] array : arrays) {
+        Integer[] maxArray = null;
+        for (Integer[] array : arrays) {
             int value = getArrayValue(array, 0, array.length - 1);
             if (value > maxValue) {
                 maxValue = value;
@@ -61,7 +61,7 @@ public class MaximumSubArrayProblem {
         return maxArray;
     }
 
-    private static int[] getMaximumSubArrayAcrossMid(int[] array, int mid) {
+    private static Integer[] getMaximumSubArrayAcrossMid(Integer[] array, int mid) {
         int length = array.length;
         int maxValue = Integer.MIN_VALUE;
         int maxI = mid;
@@ -104,7 +104,7 @@ public class MaximumSubArrayProblem {
      * @param j
      * @return
      */
-    private static int getArrayValue(int[] array, int i, int j) {
+    private static int getArrayValue(Integer[] array, int i, int j) {
         //TODO: defensive programming
 
         int sum = 0;

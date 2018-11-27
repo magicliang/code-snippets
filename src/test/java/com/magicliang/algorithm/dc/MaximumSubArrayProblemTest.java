@@ -16,11 +16,11 @@ public class MaximumSubArrayProblemTest {
 
     Logger logger = LoggerFactory.getLogger(MaximumSubArrayProblemTest.class);
 
-    private static final int[] array = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
+    private static final Integer[] array = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
 
     @Test
     public void getMaximumSubArray() {
-        int[] maximumSubArray = MaximumSubArrayProblem.getMaximumSubArray(array);
+        Integer[] maximumSubArray = MaximumSubArrayProblem.getMaximumSubArray(array);
         logger.info(maximumSubArray.toString());
     }
 }

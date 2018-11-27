@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ÍêÈ«ÒÀ¿¿¶ÑÕ»ºÍµü´ú½øĞĞÇó½âµÄ n »ÊºóÎÊÌâ ±¾Ëã·¨Î´Íê³É
+ * å®Œå…¨ä¾é å †æ ˆå’Œè¿­ä»£è¿›è¡Œæ±‚è§£çš„ n çš‡åé—®é¢˜ æœ¬ç®—æ³•æœªå®Œæˆ
  *
  * @author magicliang
- * @version $Id: NQueensProblemWithIteration.java, v 0.1 2018Äê11ÔÂ15ÈÕ 20:31 magicliang Exp $
+ * @version $Id: NQueensProblemWithIteration.java, v 0.1 2018å¹´11æœˆ15æ—¥ 20:31 magicliang Exp $
  */
 public class NQueensProblemWithIteration extends NQueensProblem {
 
@@ -21,34 +21,34 @@ public class NQueensProblemWithIteration extends NQueensProblem {
 
         initSolution(solution);
 
-        // ¿ªÊ¼ÍÆ¶¯ĞĞ
+        // å¼€å§‹æ¨åŠ¨è¡Œ
         int row = 0;
         int column = 0;
 
-        // Öğ½¥ÍÆ½øĞĞ
+        // é€æ¸æ¨è¿›è¡Œ
         outer:
         while (row < num) {
             inner:
             while (column < num) {
-                // Èç¹û±¾ËÑË÷¿ÉÒÔÏÂ½øĞĞÏÂÈ¥
+                // å¦‚æœæœ¬æœç´¢å¯ä»¥ä¸‹è¿›è¡Œä¸‹å»
                 if (noConflict(solution, row, column)) {
                     solution[row] = column;
 
-                    // Èç¹ûÕâÒ»ĞĞÃ»ÓĞ³åÍ»£¬Ö±½Ó×ßÈëÏÂÒ»ĞĞ¡£
+                    // å¦‚æœè¿™ä¸€è¡Œæ²¡æœ‰å†²çªï¼Œç›´æ¥èµ°å…¥ä¸‹ä¸€è¡Œã€‚
                     row++;
-                    // ÏÂÒ»ĞĞÒ²ÊÇ´Ó0¿ªÊ¼
+                    // ä¸‹ä¸€è¡Œä¹Ÿæ˜¯ä»0å¼€å§‹
                     column = 0;
 
-                    // Èç¹ûÏÂÒ»ĞĞµ½´ïÆåÅÌÖ®Íâ
+                    // å¦‚æœä¸‹ä¸€è¡Œåˆ°è¾¾æ£‹ç›˜ä¹‹å¤–
                     if (row == num) {
                         solutions.add(solution.clone());
-                        // ÖØ×ö½â
+                        // é‡åšè§£
                         initSolution(solution);
                     }
 
                     continue outer;
                 } else {
-                    // ·ñÔò£¬³¢ÊÔ»ØËİÉÏÒ»ĞĞ£¬´ÓÉÏÒ»ĞĞµÄÏÂÒ»ÁĞ¿ªÊ¼
+                    // å¦åˆ™ï¼Œå°è¯•å›æº¯ä¸Šä¸€è¡Œï¼Œä»ä¸Šä¸€è¡Œçš„ä¸‹ä¸€åˆ—å¼€å§‹
                     row--;
                     column = solution[row] + 1;
                 }

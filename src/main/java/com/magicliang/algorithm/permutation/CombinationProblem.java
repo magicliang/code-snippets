@@ -5,15 +5,15 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * ½â¾ö×Ö·û´®×éºÏÎÊÌâ
+ * è§£å†³å­—ç¬¦ä¸²ç»„åˆé—®é¢˜
  *
  * @author LC
- * @version $Id: CombinationProblem.java, v 0.1 2018Äê11ÔÂ12ÈÕ 23:42 LC Exp $
+ * @version $Id: CombinationProblem.java, v 0.1 2018å¹´11æœˆ12æ—¥ 23:42 LC Exp $
  */
 public class CombinationProblem {
 
     public static List<String> combination(List<String> args, int combinationSize) {
-        // ÓĞ¶àÉÙ¸ö²ÎÊı£¬¾ÍÓĞ¶àÉÙ¸öµØ·½Òª×ö·ÀÓùĞÔ±à³Ì¼ì²é
+        // æœ‰å¤šå°‘ä¸ªå‚æ•°ï¼Œå°±æœ‰å¤šå°‘ä¸ªåœ°æ–¹è¦åšé˜²å¾¡æ€§ç¼–ç¨‹æ£€æŸ¥
         if (null == args || 0 == args.size()) {
             return Collections.EMPTY_LIST;
         }
@@ -23,16 +23,16 @@ public class CombinationProblem {
             throw new IllegalArgumentException("combinationSize can not be greater than args size.");
         }
 
-        // ÓĞ¶àÉÙ¸ö²ÎÊı£¬¾ÍÓĞ¶àÉÙ¸öµØ·½ÒªÌáÇ°ÖÕÖ¹
-        // Èç¹ûÊı×é×ßµ½¾¡Í·£¬»òÕßÅÅÁĞÊı×ßµ½¾¡Í·
+        // æœ‰å¤šå°‘ä¸ªå‚æ•°ï¼Œå°±æœ‰å¤šå°‘ä¸ªåœ°æ–¹è¦æå‰ç»ˆæ­¢
+        // å¦‚æœæ•°ç»„èµ°åˆ°å°½å¤´ï¼Œæˆ–è€…æ’åˆ—æ•°èµ°åˆ°å°½å¤´
         if (1 == length || combinationSize == 1) {
             return args;
         }
 
         List<String> result = new ArrayList<>(combinationSize);
         String head = args.get(0);
-        // ×éºÏÆäÊµÊÇÎŞ·Å»ØµÄ¹ı³Ì£¬ËùÒÔÇ§Íò²»ÒªÊÔ×ÅÓÃ for Ñ­»·À´ÖğÒ»¶Ô×ÓÎÊÌâ½øĞĞÇĞ¸î£¬ÄÇ±ØÈ»ÒıÈëÖØµş×ÓÎÊÌâ¡£
-        // ÕâÖÖ×éºÏ·½Ê½ÒòÎªÎŞÖØµş×ÓÎÊÌâ£¬ËùÒÔÊµ¼ÊÉÏÊÇÎŞ·¨ÓÃ dp À´½âµÄ¡£
+        // ç»„åˆå…¶å®æ˜¯æ— æ”¾å›çš„è¿‡ç¨‹ï¼Œæ‰€ä»¥åƒä¸‡ä¸è¦è¯•ç€ç”¨ for å¾ªç¯æ¥é€ä¸€å¯¹å­é—®é¢˜è¿›è¡Œåˆ‡å‰²ï¼Œé‚£å¿…ç„¶å¼•å…¥é‡å å­é—®é¢˜ã€‚
+        // è¿™ç§ç»„åˆæ–¹å¼å› ä¸ºæ— é‡å å­é—®é¢˜ï¼Œæ‰€ä»¥å®é™…ä¸Šæ˜¯æ— æ³•ç”¨ dp æ¥è§£çš„ã€‚
         List<String> combination = combination(args.subList(1, length), combinationSize - 1);
         for (String subStr : combination) {
             result.add(head + subStr);

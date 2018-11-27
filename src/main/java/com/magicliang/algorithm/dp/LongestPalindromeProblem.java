@@ -2,10 +2,10 @@
 package com.magicliang.algorithm.dp;
 
 /**
- * ×î³¤»ØÎÄÊıÎÊÌâ
+ * æœ€é•¿å›æ–‡æ•°é—®é¢˜
  *
  * @author magicliang
- * @version $Id: LongestPalindromeProblem.java, v 0.1 2018Äê11ÔÂ16ÈÕ 20:18 magicliang Exp $
+ * @version $Id: LongestPalindromeProblem.java, v 0.1 2018å¹´11æœˆ16æ—¥ 20:18 magicliang Exp $
  */
 public class LongestPalindromeProblem {
 
